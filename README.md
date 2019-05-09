@@ -34,3 +34,4 @@ sam --version
 ### Examples
 1. [Single lambda (SAM local example)](Example_1)
 2. [Single lambda with API gateway (SAM local + Cloud)](Example_2)
+3. [S3 -> Lambda -> DynamoDB & SQS (Cloud)](Example_3)

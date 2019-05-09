@@ -62,3 +62,4 @@ sam deploy \
 aws cloudformation describe-stacks --stack-name AWS-SAM-WORKSHOP-EXAMPLE-2
 ```
 and look up `Outputs` key
+* test it from cloud!
