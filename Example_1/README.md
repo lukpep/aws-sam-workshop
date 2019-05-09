@@ -15,16 +15,17 @@ sam validate
 ```bash
  sam local generate-event apigateway aws-proxy > event.json 
 ```
+Edit `queryStringParameters` to add your name under `name` key
 or skip it and use the sample one provided in `example_event.json`
 
 ---
 #### invoke lambda locally
 ```bash
-sam local invoke --event example_event.json
-```
-or
-```bash
 sam local invoke --event event.json
+```
+or if You choose to use example:
+```bash
+sam local invoke --event example_event.json
 ```
 
 You should se something like this:
