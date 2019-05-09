@@ -5,7 +5,7 @@ Just some basic greetings lambda without any integrations
 All commands should be invoked from `Example_1` directory
 
 ---
-####validate template:
+#### validate template:
 ```bash
 sam validate
 ```

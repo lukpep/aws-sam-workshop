@@ -5,7 +5,7 @@ Same greetings lambda as in Example 1 - but this time with api gateway integrati
 All commands should be invoked from `Example_2` directory
 
 ---
-####validate template:
+#### validate template:
 ```bash
 sam validate
 ```
