@@ -28,4 +28,37 @@ $ sam local start-api
 #### test it
 just go to `http://127.0.0.1:3000/hello`
 
-or be fancy and provide You name! `http://127.0.0.1:3000/hello?name=eugeniusz`
+or be fancy and provide Your name! `http://127.0.0.1:3000/hello?name=wojtek`
+
+---
+
+#### Deploy it to the Cloud!
+* create S3 bucket for our template data:
+```bash
+aws s3 mb s3://BUCKET_NAME
+```
+remember that bucket name needs to be unique **globally** on AWS so names like 'tempbucket' would probably be taken.
+This name will be used later on in every deploy command - so keep it in mind.
+
+* package project and generate processed template:
+```bash
+sam package \
+   --template-file template.yaml \
+   --output-template-file generated-template.yaml \
+   --s3-bucket BUCKET_NAME
+```
+
+* deploy stack
+```bash
+sam deploy \
+   --template-file generated-template.yaml \
+   --stack-name AWS-SAM-WORKSHOP-EXAMPLE-2 \
+   --capabilities CAPABILITY_IAM
+```
+
+* watch stack is being created in AWS Console [here](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1)
+* test it online: Api url should be visible in the `Outputs` section of stack details page or You could use:
+```bash
+aws cloudformation describe-stacks --stack-name AWS-SAM-WORKSHOP-EXAMPLE-2
+```
+and look up `Outputs` key

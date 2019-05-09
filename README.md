@@ -30,3 +30,7 @@ If your are only planing to use AWS SAM for templates transformations and deploy
 ```bash
 sam --version
 ```
+
+### Examples
+1. [Single lambda (SAM local example)](https://github.com/lukpep/aws-sam-workshop/tree/master/Example_1)
+2. [Single lambda with API gateway (SAM local + Cloud)](https://github.com/lukpep/aws-sam-workshop/tree/master/Example_2)

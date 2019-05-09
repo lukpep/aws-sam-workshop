@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Hello wordl lambda with api gateway integration
+Description: Hello world lambda with api gateway integration
 
 Resources:
   GetCurrentConfig:
@@ -17,3 +17,8 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+
+Outputs:
+  ApiEndpoint:
+    Description: Our hello world api-endpoint
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello"
