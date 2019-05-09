@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Hello world lambda with api gateway integration
+Resources:
+  GetCurrentConfig:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: python3.6
+      Timeout: 10
+      MemorySize: 128
+      CodeUri: s3://aws-sam-workshop-huuuge/6193315aeba21b8a3a9266152a2037c8
+      Handler: hello_world.lambda_handler
+      Events:
+        SetResource:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+Outputs:
+  ApiEndpoint:
+    Description: Our hello world api-endpoint
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello
