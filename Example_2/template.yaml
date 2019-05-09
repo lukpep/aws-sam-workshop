@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Example with just one single and lonely lambda functions
+Description: Hello wordl lambda with api gateway integration
 
 Resources:
   GetCurrentConfig:
@@ -11,3 +11,9 @@ Resources:
       MemorySize: 128
       CodeUri: src
       Handler: hello_world.lambda_handler
+      Events:
+        SetResource:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
