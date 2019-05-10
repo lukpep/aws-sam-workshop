@@ -15,10 +15,10 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
-      - AttributeName: fileKey
+      - AttributeName: fileKeys
         AttributeType: S
       KeySchema:
-      - AttributeName: fileKey
+      - AttributeName: fileKeys
         KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: 5
@@ -26,7 +26,7 @@ Resources:
   CatchNewFile:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://aws-sam-workshop-huuuge1/03a72d6fdc6a3bbab1a0604ab12195bd
+      CodeUri: s3://aws-sam-workshop-huuuge-dev/03a72d6fdc6a3bbab1a0604ab12195bd
       Handler: publish_to_queue.lambda_handler
       Policies:
       - SQSSendMessagePolicy:
@@ -48,7 +48,7 @@ Resources:
   SaveFileInfoToDb:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://aws-sam-workshop-huuuge1/03a72d6fdc6a3bbab1a0604ab12195bd
+      CodeUri: s3://aws-sam-workshop-huuuge-dev/03a72d6fdc6a3bbab1a0604ab12195bd
       Handler: pop_from_queue_and_save_to_db.lambda_handler
       Policies:
       - DynamoDBCrudPolicy:
