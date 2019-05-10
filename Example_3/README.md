@@ -207,3 +207,8 @@ aws cloudformation delete-change-set --stack-name AWS-SAM-WORKSHOP-EXAMPLE-3 --c
 ```bash
 aws cloudformation execute-change-set --stack-name AWS-SAM-WORKSHOP-EXAMPLE-3 --change-set-name MyChange
 ```
+
+---
+
+#### Further reading:
+* [Prevent Updates to Stack Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
