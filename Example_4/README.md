@@ -34,3 +34,5 @@ aws cloudformation describe-stack-drift-detection-status --stack-drift-detection
 ![](https://s3-eu-west-1.amazonaws.com/aws-sam-workshop-huuuge-dev/drift.png)
 
 * You can (and should) automate stack drift detection ... using yet another stack! from [here](https://medium.com/@mitchplanck/cloudformation-drifts-312e11d870d4)
+
+* drift recover scenarios
