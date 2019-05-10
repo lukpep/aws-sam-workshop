@@ -26,7 +26,7 @@ If your are only planing to use AWS SAM for templates transformations and deploy
 
 #### AWS SAM
 * Install it: [this is how](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-linux.html)
-* check if this works 
+* check if it works 
 ```bash
 sam --version
 ```

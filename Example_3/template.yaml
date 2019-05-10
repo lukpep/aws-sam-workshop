@@ -1,0 +1,78 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Hello world lambda with api gateway integration
+
+Globals:
+  Function:
+    Runtime: python3.6
+    Timeout: 10
+    MemorySize: 128
+
+Resources:
+  InputBucket:
+    Type: AWS::S3::Bucket
+
+  NeFileInfoQueue:
+    Type: AWS::SQS::Queue
+
+  FileDb:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: fileKey
+          AttributeType: S
+      KeySchema:
+        - AttributeName: fileKey
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  CatchNewFile:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src
+      Handler: publish_to_queue.lambda_handler
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt NeFileInfoQueue.QueueName
+      Environment:
+        Variables:
+          SQS_URL: !Ref NeFileInfoQueue
+      Events:
+        NewFileEvent:
+          Type: S3
+          Properties:
+            Bucket: !Ref InputBucket
+            Events: s3:ObjectCreated:*
+
+  SaveFileInfoToDb:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src
+      Handler: pop_from_queue_and_save_to_db.lambda_handler
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FileDb
+      Environment:
+        Variables:
+          DYNAMODB_NAME: !Ref FileDb
+      Events:
+        SQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt NeFileInfoQueue.Arn
+            BatchSize: 1
+
+Outputs:
+  FileDb:
+    Description: DynamoDb table name
+    Value: !Ref FileDb
+
+  InputBucket:
+    Description: S3 Bucket for new files
+    Value: !Ref InputBucket
+
+  NeFileInfoQueue:
+    Description: Queue with info about new files uploaded
+    Value: !Ref NeFileInfoQueue

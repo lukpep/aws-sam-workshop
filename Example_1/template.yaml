@@ -3,7 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: Example with just one single and lonely lambda functions
 
 Resources:
-  GetCurrentConfig:
+  HelloWorldFunc:
     Type: AWS::Serverless::Function
     Properties:
       Runtime: python3.6

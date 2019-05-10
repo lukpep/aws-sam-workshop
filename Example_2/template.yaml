@@ -3,7 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: Hello world lambda with api gateway integration
 
 Resources:
-  GetCurrentConfig:
+  HelloWorldFunc:
     Type: AWS::Serverless::Function
     Properties:
       Runtime: python3.6
@@ -12,7 +12,7 @@ Resources:
       CodeUri: src
       Handler: hello_world.lambda_handler
       Events:
-        SetResource:
+        GetResource:
           Type: Api
           Properties:
             Path: /hello
