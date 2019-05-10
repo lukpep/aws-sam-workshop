@@ -1,6 +1,6 @@
 ### Example 3 - S3 + lambda + SQS + DynamoDb integration
 
-This time we will create simple serverless app that sends information about S3 bucket file uploads into SQS queue and (for decoupling) and later on consumes those messages and stores them in DynamoDb. This example will show how **NOT** to `hard-code` other AWS Infrastructure resources ARNs into templates and how to provide them together with all the necessary privileges. 
+This time we will create a simple serverless app that sends information about S3 bucket file uploads into SQS queue and (for decoupling) and later on consumes those messages and stores them in DynamoDb. This example will show how **NOT** to `hard-code` other AWS Infrastructure resources ARNs into templates and how to provide them together with all the necessary privileges. 
 
 All commands should be invoked from `Example_3` directory
 
@@ -11,7 +11,7 @@ sam validate
 ```
 
 #### Deploy it to the Cloud!
-Remember to use correct bucket name (crated in previous examples)
+Remember to use the correct bucket name (created in previous examples)
 
 * package project and generate processed template:
 ```bash
@@ -32,10 +32,10 @@ sam deploy \
 #### Test that our serverless stack is working as expected
 * open S3 dashboard in AWS Console
 * upload some file into our input bucket
-* open DynamoDb table and check if uploaded files meta data is present there
+* open DynamoDb table and check if uploaded files metadata is present there
 
-#### Cloud formation change sets
-*When you need to update a stack, understanding how your changes will affect running resources before you implement them can help you update stacks with confidence. Change sets allow you to preview how proposed changes to a stack might impact your running resources, for example, whether your changes will delete or replace any critical resources, AWS CloudFormation makes the changes to your stack only when you decide to execute the change set, allowing you to decide whether to proceed with your proposed changes or explore other changes by creating another change set.*
+#### Cloud formation changesets
+*When you need to update a stack, understanding how your changes will affect running resources before you implement them can help you update stacks with confidence. Change sets allow you to preview how proposed changes to a stack might impact your running resources, for example, whether your changes will delete or replace any critical resources, AWS CloudFormation makes the changes to your stack only when you decide to execute the changeset, allowing you to decide whether to proceed with your proposed changes or explore other changes by creating another changeset.*
 
 * make some change in our template - e.g change SQS binding batch size
 * package (template processing part is important) template
@@ -50,7 +50,7 @@ sam package \
 aws cloudformation create-change-set --stack-name AWS-SAM-WORKSHOP-EXAMPLE-3 --template-body file://generated-template.yaml --change-set-name MyChange --capabilities CAPABILITY_IAM
 ```
 
-* describe change set
+* describe changeset
 ```bash
 aws cloudformation describe-change-set --stack-name AWS-SAM-WORKSHOP-EXAMPLE-3 --change-set-name MyChange
 ```
@@ -84,7 +84,7 @@ You should see something like this:
     ],
 
 ```
-Important parts are: ``Replacement`` and ``RequiresRecreation`` keys - where we are provided with information if our proposed stack change will delete / replace resources - which may be not a good idea if we're talking about database for example ;-)
+Important parts are: ``Replacement`` and ``RequiresRecreation`` keys - where we are provided with information if our proposed stack change will delete / replace resources - which may be not a good idea if we're talking about the database for example ;-)
 
 * delete proposed stack change
 ```bash
@@ -93,7 +93,7 @@ aws cloudformation delete-change-set --stack-name AWS-SAM-WORKSHOP-EXAMPLE-3 --c
 
 * change batch size to nominal 1 and this time lets change ``AttributeName`` in our DynamoDb database schema and attributes configuration.
 
-* generate change set once more and describe it. You should end up with something like this:
+* generate changeset once more and describe it. You should end up with something like this:
 ```bash
 "Changes": [
         {
@@ -193,12 +193,12 @@ aws cloudformation delete-change-set --stack-name AWS-SAM-WORKSHOP-EXAMPLE-3 --c
 
 ```
 
-which tells You that DynamoDb needs to be replaced - but not only - also lambdas and policies that interacts with it need to be updated.
-* viewing change sets in AWS Console is alo a valid option:
+which basically tells You that DynamoDb needs to be replaced - but not only - also lambdas and policies that interact with it need to be updated.
+* viewing changesets in AWS Console is also a valid option:
 
 ![](https://s3-eu-west-1.amazonaws.com/aws-sam-workshop-huuuge-dev/change-set.png)
 
-* What can be done with change sets?
+* What can be done with changesets?
 
 ```bash
 aws cloudformation delete-change-set --stack-name AWS-SAM-WORKSHOP-EXAMPLE-3 --change-set-name MyChange

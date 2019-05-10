@@ -1,4 +1,4 @@
-### Example 1 - Hello World from lambda
+### Example 1 - Hello World from AWS lambda
 
 Just some basic greetings lambda without any integrations
 
@@ -23,12 +23,12 @@ or skip it and use the sample one provided in `example_event.json`
 ```bash
 sam local invoke --event event.json
 ```
-or if You choose to use example:
+or if You choose to use an example:
 ```bash
 sam local invoke --event example_event.json
 ```
 
-You should se something like this:
+You should see something like this:
 ```bash
 $ sam local invoke --event example_event.json                                                                                 1 ↵
 2019-05-09 10:57:03 Found credentials in shared credentials file: ~/.aws/credentials
@@ -37,7 +37,7 @@ $ sam local invoke --event example_event.json                                   
 Fetching lambci/lambda:python3.6 Docker container image......
 2019-05-09 10:57:05 Mounting /home/lukpep/work/aws-sam-workshop/Example_1/src as /var/task:ro,delegated inside runtime container
 START RequestId: 0a6ad0f5-b39d-4e3c-b7b9-3584f44e4da0 Version: $LATEST
-[INFO]	2019-05-09T08:57:06.425Z	0a6ad0f5-b39d-4e3c-b7b9-3584f44e4da0	Saying hello from AWS lambda ... 
+[INFO]    2019-05-09T08:57:06.425Z    0a6ad0f5-b39d-4e3c-b7b9-3584f44e4da0    Saying hello from AWS lambda ... 
 
 END RequestId: 0a6ad0f5-b39d-4e3c-b7b9-3584f44e4da0
 REPORT RequestId: 0a6ad0f5-b39d-4e3c-b7b9-3584f44e4da0 Duration: 0 ms Billed Duration: 100 ms Memory Size: 128 MB Max Memory Used: 19 MB

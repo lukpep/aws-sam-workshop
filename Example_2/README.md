@@ -1,6 +1,6 @@
-### Example 2 - Hello World from lambda with API gateway integration
+### Example 2 - Hello World from AWS lambda with API gateway integration
 
-Same greetings lambda as in Example 1 - but this time with api gateway integration and possibility to deploy it to the world!
+Same greetings lambda as in Example 1 - but this time with API gateway integration and a possibility to deploy it to the world!
 
 All commands should be invoked from `Example_2` directory
 
@@ -33,7 +33,7 @@ or be fancy and provide Your name! `http://127.0.0.1:3000/hello?name=wojtek`
 ---
 
 #### Deploy it to the Cloud!
-* create S3 bucket for our template data:
+* create an S3 bucket for our template data:
 ```bash
 aws s3 mb s3://BUCKET_NAME
 ```
@@ -57,9 +57,9 @@ sam deploy \
 ```
 
 * watch stack is being created in AWS Console [here](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1)
-* test it online: Api url should be visible in the `Outputs` section of stack details page or You could use:
+* test it online: Api URL should be visible in the `Outputs` section of stack details page or You could use:
 ```bash
 aws cloudformation describe-stacks --stack-name AWS-SAM-WORKSHOP-EXAMPLE-2
 ```
 and look up `Outputs` key
-* test it from cloud!
+* test it from the cloud!
