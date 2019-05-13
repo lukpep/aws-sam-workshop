@@ -36,3 +36,4 @@ sam --version
 2. [Single lambda with API gateway (SAM local + Cloud)](Example_2)
 3. [S3 -> Lambda -> DynamoDB & SQS (Cloud)](Example_3)
 4. [Termination protection and Drift detection](Example_4)
+5. [Nested applications](Example_5)
