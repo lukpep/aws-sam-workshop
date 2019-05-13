@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Hello world lambda with api gateway integration
+Description: S3 -> SQS -> DynamoDB example
 
 Globals:
   Function:

@@ -5,12 +5,12 @@ Same greetings lambda as in Example 1 - but this time with API gateway integrati
 All commands should be invoked from `Example_2` directory
 
 ---
-#### validate template:
+#### Validate template:
 ```bash
 sam validate
 ```
 ---
-#### start local api
+#### Start local api
 
 ```bash
  sam local start-api
@@ -25,7 +25,7 @@ $ sam local start-api
 ```
 
 ---
-#### test it
+#### Test it
 just go to `http://127.0.0.1:3000/hello`
 
 or be fancy and provide Your name! `http://127.0.0.1:3000/hello?name=wojtek`

@@ -5,7 +5,7 @@ This time we will create a simple serverless app that sends information about S3
 All commands should be invoked from `Example_3` directory
 
 ---
-#### validate template:
+#### Validate template:
 ```bash
 sam validate
 ```
