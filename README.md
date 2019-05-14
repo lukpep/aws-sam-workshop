@@ -1,10 +1,14 @@
 # aws-sam-workshop
+![](http://blog.mloza.pl/wp-content/uploads/2018/08/Amazon-Web-Services_logo835x396.png)
+
 workshop about AWS SAM and IaaC concepts
+
+![](https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2018/10/19/aws_sam_introduction-1260x352.png)
 
 ### Prerequisites:
 
 #### AWS and AWS CLI
-* log in to AWS console [here](https://console.aws.amazon.com/console/home) and generate Access and Secret Keys for CLI access. How to generate them? [This way](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+* Log in to AWS console [here](https://console.aws.amazon.com/console/home) and generate Access and Secret Keys for CLI access. How to generate them? [This way](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 * Install the **AWS CLI** -> [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 * Configure the **AWS CLI** [this is how](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) using Access and Secret Key generated earlier on. **Remember to use eu-west-1 (Ireland) region!**. If you already have some account configured locally please create a separate profile.
 ```bash
